@@ -1,0 +1,99 @@
+.body{
+  margin-left: 0;
+}
+.hero1{
+    margin-top: 150px;
+    margin-left: 120px;
+}
+.hero1:hover{
+   cursor: pointer;
+}
+.hero4{
+ margin-left: 120px;
+ margin-top: 30px;
+}
+.hero6{
+   margin-top: 30px;
+   margin-left: 120px;
+}
+
+.menoffer1{
+   margin-top: 60px;
+    margin-left: 120px;
+   
+}
+.CasualLove{
+   margin-top: 40px;
+   font-size: 40px;
+     margin-left: 70px;
+   }
+   .Carts1 {
+    display: inline;
+      margin-left: 80px;
+   }
+
+.Carts2{
+   display: inline; 
+   margin-left: 30px;
+   
+   
+   
+} 
+.Cartsa, .Cartsb, .Cartsc, .Cartsd {
+ max-width: 250px;
+padding: 0 5px; 
+margin-top: 30px;
+
+
+}
+.freedelimg{
+   margin-top: 60px;
+     margin-left: 120px;
+}
+.Cartse,.Cartsf,.Cartsg,.Cartsh{
+ padding: 0 4px; 
+ max-width: 250px;
+ margin-top: 30px;
+ 
+ 
+ }
+.Carts3{
+   display: inline;
+  
+}
+
+.Cartsi, .Cartsj, .Cartsk, .Cartsl{
+max-width: 250px;
+margin-top: 30px;
+border-radius: 20px;
+ padding:  12px; 
+  
+} 
+.giftimg{
+   margin-top: 50px;
+     margin-left: 120px;
+}
+
+.exploreshopmen{
+   margin-top: 30px;
+  margin-left:1px;
+  display:inline;
+  max-width:300px;
+  height:300px;
+  padding-left:15px;
+  border-radius:40px;
+   
+}
+.exploreshopmen:hover{
+   transform: translatey(-10px);
+   
+   
+}.Cartsa:hover{
+ transform: translatey(-10px);
+}
+
+
+
+
+
+

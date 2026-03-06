@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+}
+.offer1{
+    margin-top:40px;
+    margin-left: 120px;
+}
+.Banner1{
+      margin-left: 120px;
+}
+.Banner1:hover{
+cursor: pointer;
+}
+.Sleepwear{
+    margin-top:30px;
+     margin-left: 120px;
+
+}
+.Card0{
+    display:inline;
+   margin-left: 70px;
+   padding-left: 19px;
+   
+   
+}
+.Card1,.Card2,.Card3,.Card4{
+    border-radius: 20px;
+    max-width: 250px;
+  
+     margin-top: 30px;
+}
+.Card01{
+    display:inline;
+   
+}
+.Card5,.Card6,.Card7,.Card8{
+    border-radius: 20px;
+     max-width: 250px;
+     margin-left: 40px;
+    margin-top: 30px;
+   }
+   .freedeli{
+     margin-top: 30px;
+     margin-left: 20px;
+   }
+   .Banner2,.Banner3,.Banner4{
+      margin-top: 30px;
+       margin-left: 120px;
+   }
+   .Card9,.Card10 {
+     margin-top: 30px;
+       margin-left: 10px;
+       max-width: 400px;
+   }
+   .Card21{
+     margin-top: 30px;
+       margin-left: 10px;
+       max-width: 700px;
+   }
+   .Card02{
+    display:inline;
+   
+}
+.Card11,.Card12,.Card13,.Card14{
+    border-radius: 20px;
+     max-width: 250px;
+    margin-left: 20px;
+    margin-top: 30px;
+   }
+   .Card15{
+    margin-top: 30px;
+    margin-left: 120px;
+   }
+   .Card03{
+     display:inline;
+   }
+   .Card17,.Card18,.Card19,.Card20{
+      border-radius: 20px;
+     max-width: 250px;
+    margin-left: 16px;
+   margin-top: 30px;
+   }
+   .Card21{
+    margin-top: 40px;
+    margin-left: 120px;
+   }
+   #exploreshopwomen{
+   margin-top: 30px;
+  margin-left:40px;
+  display:inline;
+  max-width:300px;
+  height:300px;
+  padding-left:20px;
+  border-radius:40px;
+   }
+   #exploreshopwomen:hover{
+   transform: translatey(-10px);
+   
+   
+}
+.twocard{
+    display: flex;
+    margin-left: 190px;
+    /* max-width: 400px; */
+}

@@ -1,0 +1,54 @@
+/* .sneakers {
+  padding: 50px 80px;
+  text-align: center;
+}
+
+.sneakers-title {
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+
+.sneakers-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.sneaker-card {
+  width: 250px;
+  border: 1px solid #eee;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.sneaker-card img {
+  width: 100%;
+}
+
+.sneaker-card h3 {
+  margin: 15px 0 5px;
+}
+
+.sneaker-card p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sneaker-card button {
+  padding: 10px 20px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sneaker-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.sneaker-card button:hover {
+  background: #444;
+} */

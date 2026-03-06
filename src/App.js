@@ -1,0 +1,78 @@
+
+
+// import React from 'react'
+// import { BrowserRouter, Route, Routes } from 'react-router-dom'
+// import Home from './Components/Home'
+// import Navbar from './Components/Navbar'
+// import { LinenStyle } from './Components/linenStyle'
+// import Pullon from './Components/Pullon'
+// import Mens from './Components/Mens'
+// import Women from './Components/Women'
+// import Snekers from './Components/Snekers'
+
+
+// export default function App() {
+//   return (
+//     <div>
+//        <BrowserRouter>
+//        <Navbar/>
+//         <Routes>
+//             {/* <Route path='/' element={Home}></Route> */}
+//             <Route path='/' element={Mens}></Route>
+//             <Route path='/women' element={Women}></Route>
+//             <Route path='/Snekers' element={Snekers}></Route>
+//             <Route path='/linenstyle' element={LinenStyle}></Route>
+//             <Route path='/pullon' element={Pullon}></Route>
+//         </Routes>
+
+//        </BrowserRouter> 
+//     </div>
+//   )
+// }
+
+
+
+
+
+
+
+
+import React from 'react'
+import { BrowserRouter, Route, Routes,} from 'react-router-dom'
+import Navbar from './Components/Navbar'
+import Mens from './Components/Mens'
+import Women from './Components/Women'
+// import Sneakers from './Components/Sneakers'
+import Footer from './Components/Footer'
+import WomenCate from './Components/WomenCate'
+import MenCate from './Components/MenCate'
+// import Linen from './Components/Linenproduct/Linen'
+import Activewear from './Components/Activewear/Activewear'
+// import Linen from './Components/Linenproduct/Linen'
+
+export default function App() {
+  return (
+   <> 
+ 
+    <BrowserRouter>
+   
+       <Navbar/>
+       
+       <Routes>
+            <Route path='/' element={<Mens/>}/>
+             <Route path='/Women' element={<Women/>}/>
+             <Route path='/womencate' element={<WomenCate/>}/>
+             <Route path='/Mencate' element={<MenCate/>}/>
+             {/* <Route path="/category/:id" element={<Linen/>}></Route> */}
+             <Route path='/Activewear' element={<Activewear/>}/>
+              
+           
+       </Routes>
+       
+     </BrowserRouter> 
+      
+      <Footer/>
+    
+    </>
+  )
+}
