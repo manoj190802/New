@@ -1,4 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
+
+import './Notification.css';
 
 const CartContext = createContext();
 
@@ -6,6 +8,10 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [showNotification, setShowNotification] = useState(false);
+  const [fadeNotification, setFadeNotification] = useState(false);
+  const fadeTimeoutRef = useRef(null);
+  const hideTimeoutRef = useRef(null);
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -34,6 +40,24 @@ export const CartProvider = ({ children }) => {
       }
       return [...prevItems, { ...product, quantity: 1 }];
     });
+
+    // Clear any existing timeouts to reset the notification timer
+    if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+    if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+
+    // Trigger notification
+    setShowNotification(true);
+    setFadeNotification(false);
+
+    // After 2.5s start fading out, after 3s completely hide
+    fadeTimeoutRef.current = setTimeout(() => {
+      setFadeNotification(true);
+    }, 2500);
+
+    hideTimeoutRef.current = setTimeout(() => {
+      setShowNotification(false);
+      setFadeNotification(false);
+    }, 3000);
   };
 
   const removeFromCart = (id) => {
@@ -67,6 +91,14 @@ export const CartProvider = ({ children }) => {
       cartCount
     }}>
       {children}
+      {showNotification && (
+        <div className="notification-container">
+          <div className={`notification ${fadeNotification ? 'fade-out' : ''}`}>
+            <span className="notification-icon">✓</span>
+            Successfully added to bag
+          </div>
+        </div>
+      )}
     </CartContext.Provider>
   );
 };
