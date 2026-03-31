@@ -43,102 +43,93 @@ import menImg2 from '../Assets/Women/shopmen2.png'
 import womenImg2 from '../Assets/Women/shopwomen2.png'
 import sneakersImg2  from '../Assets/Women/shopsneakers2.png'
 
+import { useCart } from './CartContext'
+
 export default function Women() {
-
-
    const navigate = useNavigate();
+   const { addToCart } = useCart();
 
    const Cate = () =>{
       navigate("/womencate")
    }
 
-   const Datas = [
-    { img: card1 }, 
-    { img: card2 },
-    { img: card3 },
-    { img: card4 },
-   
-    { img1: Card5 }, 
-    { img1: Card6 },
-    { img1: Card7 },
-    { img1: Card8 },
+   const sleepwearProducts = [
+    { id: 'w1', img: card1, name: 'Floral Pajama Set', price: '₹899' }, 
+    { id: 'w2', img: card2, name: 'Satin Nighty', price: '₹1299' },
+    { id: 'w3', img: card3, name: 'Cotton Nightdress', price: '₹799' },
+    { id: 'w4', img: card4, name: 'Printed Sleep Shirt', price: '₹599' },
+   ];
 
-    { img2: Card11 }, 
-    { img2: Card12 },
-    { img2: Card13 },
-    { img2: Card14 },
+   const casualProducts = [
+    { id: 'w5', img: Card5, name: 'Summer Maxi Dress', price: '₹1499' }, 
+    { id: 'w6', img: Card6, name: 'Denim Jacket', price: '₹1899' },
+    { id: 'w7', img: Card7, name: 'Graphic T-Shirt', price: '₹499' },
+    { id: 'w8', img: Card8, name: 'High-Waist Jeans', price: '₹1299' },
+   ];
 
-    { img3: Card17 }, 
-    { img3: Card18 },
-    { img3: Card19 },
-    { img3: Card20},
-   ]
    return(
-    <>
+    <div className="women-page">
         <img className='Banner1' src={Banner} onClick={Cate} alt="" />
         <img className='offer1' src={offer1} alt="" />
-           <h1 className='Sleepwear'>Sleepwear Edit</h1>
+        
+        <section className="product-section">
+          <h1 className='Sleepwear'>Sleepwear Edit</h1>
+          <div className="product-grid">
+            {sleepwearProducts.map((item) => (
+              <div key={item.id} className='product-card'>
+                <img src={item.img} alt={item.name} />
+                <div className="product-info">
+                  <h3>{item.name}</h3>
+                  <p>{item.price}</p>
+                  <button onClick={() => addToCart({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    image: item.img
+                  })}>Add to Bag</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* map function */}
-     { Datas.map((item) => (
-        <div className='Card0'>
-          <img className='Card1' src={item.img} alt="" />
-         
-        </div>
-      ))}
+        <img className='freedeli' src={freedeli} alt="" />
+
+        <section className="product-section">
           <h1 className='Sleepwear'>Casual Love</h1>
-             {/* map function */}
-     { Datas.map((item) => (
-        <div className='Card01'>
-          <img className='Card5' src={item.img1} alt="" />
-          
-        </div>
-      ))}
-       <img className='freedeli' src={freedeli} alt="" />
+          <div className="product-grid">
+            {casualProducts.map((item) => (
+              <div key={item.id} className='product-card'>
+                <img src={item.img} alt={item.name} />
+                <div className="product-info">
+                  <h3>{item.name}</h3>
+                  <p>{item.price}</p>
+                  <button onClick={() => addToCart({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    image: item.img
+                  })}>Add to Bag</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <h1 className='Sleepwear'>Activewear Edit</h1>
-         <img className='Banner2' src={Banner2} alt="" />
-          <h1 className='Sleepwear'>Twice the Charm: Ethnic & Western</h1>
-<div className='twocard'> <img className='Card9' src={Card9} alt="" />
-          <img className='Card10' src={Card10} alt="" /></div>
-          
-
-           <h1 className='Sleepwear'>Slumber In Style</h1>
-            <img className='Banner3' src={Banner3} alt="" />
-
-            <h1 className='Sleepwear'>Ethnic Elegance</h1>
-             { Datas.map((item) => (
-        <div className='Card02'>
-          <img className='Card11' src={item.img2} alt="" />
+        <img className='Banner2' src={Banner2} alt="" />
         
-        </div>
-      ))}
-       <h1 className='Sleepwear'>Online Exclusives</h1>
+        <h1 className='Sleepwear'>Slumber In Style</h1>
+        <img className='Banner3' src={Banner3} alt="" />
+
+        <h1 className='Sleepwear'>Online Exclusives</h1>
         <img className='Banner4' src={Banner4} alt="" />
-        <img className='Card15' src={Card15} alt="" />
-          <img className='Card16' src={Card16} alt="" />
-
-<h1 className='Sleepwear'>Style Spotlight</h1>
-            { Datas.map((item) => (
-        <div className='Card03'>
-          <img className='Card17' src={item.img3} alt="" />
-        
-        </div>
-      ))}
-      <h1 className='Sleepwear'>Extras That Pop</h1>
-       <img className='Card21' src={Card21} alt="" />
-          <img className='Card22' src={Card22} alt="" />
-
-           <h1 className='CasualLove'>Explore More </h1>
         
         <div id='exploreshopwomen'>
-            <img id='exploreshopwomen' src={womenImg2} alt="" />
-          <img id='exploreshopwomen' src={menImg2} alt="" />
-         <img id='exploreshopwomen' src={sneakersImg2} alt="" />
-  
+            <img src={womenImg2} alt="" />
+            <img src={menImg2} alt="" />
+            <img src={sneakersImg2} alt="" />
         </div>
-      
-      </>
-
+      </div>
    )
-
 }

@@ -42,29 +42,33 @@ import { BrowserRouter, Route, Routes,} from 'react-router-dom'
 import Navbar from './Components/Navbar'
 import Mens from './Components/Mens'
 import Women from './Components/Women'
-// import Sneakers from './Components/Sneakers'
 import Footer from './Components/Footer'
 import WomenCate from './Components/WomenCate'
 import MenCate from './Components/MenCate'
-// import Linen from './Components/Linenproduct/Linen'
 import Activewear from './Components/Activewear/Activewear'
-// import Linen from './Components/Linenproduct/Linen'
+import { CartProvider } from './Components/CartContext'
+import CartPage from './Components/Cart/CartPage'
+import Checkout from './Components/Cart/Checkout'
+import Linen from './Components/Linenproduct/Linen'
+
 
 export default function App() {
   return (
-   <> 
+   <CartProvider> 
  
     <BrowserRouter>
    
        <Navbar/>
        
        <Routes>
-            <Route path='/' element={<Mens/>}/>
-             <Route path='/Women' element={<Women/>}/>
-             <Route path='/womencate' element={<WomenCate/>}/>
-             <Route path='/Mencate' element={<MenCate/>}/>
-             {/* <Route path="/category/:id" element={<Linen/>}></Route> */}
-             <Route path='/Activewear' element={<Activewear/>}/>
+             <Route path='/' element={<Mens/>}/>
+              <Route path='/Women' element={<Women/>}/>
+              <Route path='/womencate' element={<WomenCate/>}/>
+              <Route path='/Mencate' element={<MenCate/>}/>
+              <Route path='/Activewear' element={<Activewear/>}/>
+              <Route path='/linen' element={<Linen/>}/>
+              <Route path='/cart' element={<CartPage/>}/>
+              <Route path='/checkout' element={<Checkout/>}/>
               
            
        </Routes>
@@ -73,6 +77,6 @@ export default function App() {
       
       <Footer/>
     
-    </>
+    </CartProvider>
   )
 }

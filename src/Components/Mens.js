@@ -36,107 +36,128 @@ import giftimg from '../Assets/giftimg.png'
 
 
 
-export default function Mens() {
+import { useCart } from './CartContext'
 
-  const navigates = useNavigate()
+export default function Mens() {
+  const navigate = useNavigate()
+  const { addToCart } = useCart()
 
   const menCate = () => {
-    navigates("/Mencate")
-   
+    navigate("/Mencate")
   }
 
   const Activewear =()=> {
     navigate("/Activewear")
   }
-  
-  // 1. Data-va Return-ku mela vinga
-  const Datas = [
-    { img: img1 },
-    { img: img2 },
-    { img: img3 },
-    { img: img4},
 
-    { img1: img5 },
-    { img1: img6 },
-    { img1: img7 },
-    { img1: img8 },
-
-    { img2: img9 },
-    { img2: img10 },
-    { img2: img11 },
-    { img2: img12 },
-
-    { men: menImg },
-    { men: womenImg },
-    { men: sneakersImg },
-
-
+  const casualLoveItems = [
+    { id: 'm1', img: img1, name: 'Premium Cotton Tee', price: '₹499' },
+    { id: 'm2', img: img2, name: 'Slim Fit Chinos', price: '₹1299' },
+    { id: 'm3', img: img3, name: 'Linen Casual Shirt', price: '₹799' },
+    { id: 'm4', img: img4, name: 'Striped Polo', price: '₹899' },
   ];
-const navigate = useNavigate()
+
+  const styleSpotlightItems = [
+    { id: 'm5', img: img5, name: 'Bomber Jacket', price: '₹2499' },
+    { id: 'm6', img: img6, name: 'Graphic Sweatshirt', price: '₹1499' },
+    { id: 'm7', img: img7, name: 'Knit Pullover', price: '₹1799' },
+    { id: 'm8', img: img8, name: 'Corduroy Overcoat', price: '₹3499' },
+  ];
+
+  const bottomsUpItems = [
+    { id: 'm9', img: img9, name: 'Utility Cargo Pants', price: '₹1599' },
+    { id: 'm10', img: img10, name: 'Stretch Denim Jeans', price: '₹1999' },
+    { id: 'm11', img: img11, name: 'Athletic Joggers', price: '₹1199' },
+    { id: 'm12', img: img12, name: 'Formal Trousers', price: '₹1499' },
+  ];
+
   return (
-    <div className='body'>
+    <div className='body mens-page'>
+      <img className='hero1' src={hero1} onClick={menCate} alt="Featured" />
+      <img className='menoffer1' src={menoffer1} alt="Offer" />
 
-      <img className='hero1' src={hero1} onClick={menCate} alt="" />
-      <img className='menoffer1' src={menoffer1} alt="" />
-
-      <h1 className='CasualLove'>Casual Love</h1>
-
-      {/*  Map Function */}
-      {Datas.map((item, index) => (
-        <div className='Carts1'>
-          <img className='Cartsa' src={item.img}   alt="" />
-          {/* <h1>{item.title}</h1> */}
+      <section className="product-section">
+        <h1 className='CasualLove'>Casual Love</h1>
+        <div className='product-grid'>
+          {casualLoveItems.map((item) => (
+            <div key={item.id} className='product-card'>
+               <img src={item.img} alt={item.name} />
+               <div className="product-info">
+                 <h3>{item.name}</h3>
+                 <p>{item.price}</p>
+                 <button onClick={() => addToCart({
+                   id: item.id,
+                   name: item.name,
+                   price: item.price,
+                   image: item.img
+                 })}>Add to Bag</button>
+               </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </section>
 
-      <img className='freedelimg' src={Freedelimg} alt="" />
+      <img className='freedelimg' src={Freedelimg} alt="Free Delivery" />
 
       <h1 className='CasualLove'>Activewear Edit</h1>
-      <img className='hero4' src={hero4} onClick={Activewear} alt="" />
+      <img className='hero4 clickable' src={hero4} onClick={Activewear} alt="Activewear" />
 
       <h1 className='CasualLove'>Lounge mode: On</h1>
-      <img className='hero4' src={hero5} alt="" />
+      <img className='hero4' src={hero5} alt="Lounge" />
 
-      {/*  Map Function */}
-      <h1 className='CasualLove'>Style Spotlight </h1>
-
-      {Datas.map((item) => (
-        <div className='Carts2'>
-          <img className='Cartse' src={item.img1} alt="" />
-
+      <section className="product-section">
+        <h1 className='CasualLove'>Style Spotlight</h1>
+        <div className='product-grid'>
+          {styleSpotlightItems.map((item) => (
+             <div key={item.id} className='product-card'>
+                <img src={item.img} alt={item.name} />
+                <div className="product-info">
+                  <h3>{item.name}</h3>
+                  <p>{item.price}</p>
+                  <button onClick={() => addToCart({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    image: item.img
+                  })}>Add to Bag</button>
+                </div>
+             </div>
+          ))}
         </div>
-      ))}
+      </section>
 
-      <h1 className='CasualLove'>Online Exclusives </h1>
+      <img className='hero6' src={hero6} alt="Exclusives" />
+      <img className='hero7' src={hero7} alt="Exclusives" />
 
-      <img className='hero6' src={hero6} alt="" />
-      <img className='hero7' src={hero7} alt="" />
-
-
-      <h1 className='CasualLove'>Bottoms Up: Style Edition </h1>
-
-      {Datas.map((item) => (
-        <div className='Carts3'>
-          <img className='Cartsi' src={item.img2} alt="" />
-
+      <section className="product-section">
+        <h1 className='CasualLove'>Bottoms Up: Style Edition</h1>
+        <div className='product-grid'>
+          {bottomsUpItems.map((item) => (
+             <div key={item.id} className='product-card'>
+                <img src={item.img} alt={item.name} />
+                <div className="product-info">
+                  <h3>{item.name}</h3>
+                  <p>{item.price}</p>
+                  <button onClick={() => addToCart({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    image: item.img
+                  })}>Add to Bag</button>
+                </div>
+             </div>
+          ))}
         </div>
-      ))}
-      <img className='giftimg' src={giftimg} alt="" />
+      </section>
 
-      <h1 className='CasualLove'>Explore More </h1>
-      {Datas.map((item) => (
-        <div className='exploreshopmen'>
-          <img className='exploreshopmen' src={item.men} alt="" />
+      <img className='giftimg' src={giftimg} alt="Gift" />
 
-
-        </div>
-      ))}
-
+      <h1 className='CasualLove'>Explore More</h1>
+      <div className='explore-grid'>
+          <img src={menImg} alt="Shop Men" />
+          <img src={womenImg} alt="Shop Women" />
+          <img src={sneakersImg} alt="Shop Sneakers" />
+      </div>
     </div>
-
   );
-
-
-
-
-}
+}

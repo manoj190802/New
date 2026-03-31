@@ -32,169 +32,74 @@ import activewear28 from '../../Assets/Activewearimg/image copy 27.png';
 import activewear29 from '../../Assets/Activewearimg/image copy 28.png';
 
 
+import { useCart } from '../CartContext';
+
 const Datas = [
   {
+    id: 'a1',
     img: activewear,
-    title: '₹599',
-    content: 'Men Solid Athleisure Joggers'
+    price: '₹599',
+    name: 'Men Solid Athleisure Joggers'
   },
-
   {
+    id: 'a2',
     img: activewear2,
-    title: '₹599',
-    content: 'Men Solid Athleisure Joggers'
+    price: '₹599',
+    name: 'Men Solid Athleisure Joggers'
   },
   {
+    id: 'a3',
     img: activewear3,
-    title: '₹499',
-    content: 'Men Solid Athleisure Shorts'
+    price: '₹499',
+    name: 'Men Solid Athleisure Shorts'
   },
   {
+    id: 'a4',
     img: activewear4,
-    title: '₹599',
-    content: 'Men Solid Athleisure Track Pants'
+    price: '₹599',
+    name: 'Men Solid Athleisure Track Pants'
   },
-  {
-    img: activewear5,
-    title: '₹499',
-    content: 'Men Solid Athleisure Shorts'
-  },
-  {
-    img: activewear6,
-    title: '₹499',
-    content: 'Men Solid Athleisure Shorts'
-  },
-  {
-    img: activewear7,
-    title: '₹599',
-    content: 'Men Solid Athleisure Joggers'
-  },
-  {
-    img: activewear8,
-    title: '₹399',
-    content: 'Men Slim Fit Solid Athleisure T-shirt'
-  },
-  {
-    img: activewear9,
-    title: '₹599',
-    content: 'Men Solid Athleisure Track Pants'
-  },
-  {
-    img: activewear10,
-    title: '₹399',
-    content: 'URB_N Men Colourblocked T-shirt'
-  },
-  {
-    img: activewear11,
-    title: '₹599',
-    content: 'Men Solid Athleisure Joggers'
-  },
-  {
-    img: activewear12,
-    title: '₹599',
-    content: 'Men Solid Athleisure Joggers'
-  },
-  {
-    img: activewear13,
-    title: '₹599',
-    content: 'Men NFL Printed Sports T-shirt'
-  },
-  {
-    img: activewear14,
-    title: '₹599',
-    content: 'Men Side Stripes Sports Track Pants'
-  },
-  {
-    img: activewear15,
-    title: '₹599',
-    content: 'Men Colourblock Sports T-shirt'
-  },
-  {
-    img: activewear16,
-    title: '₹599',
-    content: 'Men Side Stripes Sports Track Pants'
-  },
-  {
-    img: activewear17,
-    title: '₹599',
-    content: 'Men Typography Print Sports T-shirt'
-  },
-  {
-    img: activewear18,
-    title: '₹399',
-    content: 'Men Striped Slim Fit Sports Shorts'
-  },
-  {
-    img: activewear19,
-    title: '₹599',
-    content: 'Men Solid Athleisure Track Pants'
-  },
-  {
-    img: activewear20,
-    title: '₹399',
-    content: 'Men Printed Sports T-shirt'
-  },
-  {
-    img: activewear21,
-    title: '₹399',
-    content: 'Men Side Stripes Sports T-shirt'
-  },
-  {
-    img: activewear22,
-    title: '₹399',
-    content: 'Men Printed Athleisure T-shirt'
-  },
-  {
-    img: activewear23,
-    title: '₹499',
-    content: 'Men Side Stripes Sports T-shirt'
-  },
-  {
-    img: activewear24,
-    title: '₹499',
-    content: 'Men NFL Printed Sports T-shirt'
-  },
-  {
-    img: activewear25,
-    title: '₹499',
-    content: 'Men Printed Athleisure T-shirt'
-  },
-  {
-    img: activewear26,
-    title: '₹599',
-    content: 'Men Printed Sports T-shirt'
-  },
-  {
-    img: activewear27,
-    title: '₹599',
-    content: 'URB_N Men Colourblocked T-shirt'
-  },
-  {
-    img: activewear28,
-    title: '₹499',
-    content: 'Men Checked Oversized Sports Shirt'
-  },
-  {
-    img: activewear29,
-    title: '₹499',
-    content: 'Men Typography Print Sports T-shirt'
-  },
+  // ... adding more ids to existing ones for demo
+  { id: 'a5', img: activewear5, price: '₹499', name: 'Men Solid Athleisure Shorts' },
+  { id: 'a6', img: activewear6, price: '₹499', name: 'Men Solid Athleisure Shorts' },
+  { id: 'a7', img: activewear7, price: '₹599', name: 'Men Solid Athleisure Joggers' },
+  { id: 'a8', img: activewear8, price: '₹399', name: 'Men Slim Fit Solid Athleisure T-shirt' },
+  { id: 'a9', img: activewear9, price: '₹599', name: 'Men Solid Athleisure Track Pants' },
+  { id: 'a10', img: activewear10, price: '₹399', name: 'URB_N Men Colourblocked T-shirt' },
+];
 
-]
 export default function Activewear() {
-  return (
-    <div>
-      <h3 className={styles.button2} >Shop For:</h3>
-      <button className={styles.button1}>Tops</button>
-      <button className={styles.button1}>Bottoms</button>
-      <div className={styles.actimg}>
+  const { addToCart } = useCart();
 
-        {/*  Map Function */}
+  return (
+    <div className={styles.container}>
+      <h3 className={styles.button2} >Shop For:</h3>
+      <div className={styles.filters}>
+        <button className={styles.button1}>Tops</button>
+        <button className={styles.button1}>Bottoms</button>
+      </div>
+      
+      <div className={styles.productGrid}>
         {Datas.map((item) => (
-          <div className={styles.actcate} >
-            <img className='' src={item.img} alt="" width={300} />
-            <h1>{item.title}</h1>
-            <h3>{item.content}</h3>
+          <div key={item.id} className={styles.productCard}>
+            <div className={styles.imgWrapper}>
+               <img src={item.img} alt={item.name} />
+            </div>
+            <div className={styles.info}>
+               <h1>{item.price}</h1>
+               <h3>{item.name}</h3>
+               <button 
+                 className={styles.addBtn}
+                 onClick={() => addToCart({
+                   id: item.id,
+                   name: item.name,
+                   price: item.price,
+                   image: item.img
+                 })}
+               >
+                 Add To Bag
+               </button>
+            </div>
           </div>
         ))}
       </div>

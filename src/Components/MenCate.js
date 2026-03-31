@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './MenCate.module.css'
+import { useCart } from './CartContext'
 
 import category1 from '../Assets/MenCate/image1.png'
 import category2 from '../Assets/MenCate/image2.png'
@@ -46,6 +47,7 @@ import category42 from '../Assets/MenCate/image copy 37.png'
 import category43 from '../Assets/MenCate/image copy 38.png'
 
 export default function MenCate() {
+    const { addToCart } = useCart();
     const Datas = [
       { img: category1,
         title:"₹1,200" ,
@@ -212,8 +214,8 @@ export default function MenCate() {
         content: 'Men Textured T-shirt'
        },
     ]
-  return (<>
-    <div className={styles}>
+  return (
+    <div className={styles.container}>
       <div className={styles.button}>
         <h3 className={styles.shopfoe}>Shop For:</h3>
         <button className={styles.button1}>Tops</button>
@@ -222,20 +224,27 @@ export default function MenCate() {
      {/*  Map Function */}
          <h4 className={styles.head1}>You searched for: 65 products available</h4>
            
-            <div className={styles.Cate}>
-          {Datas.map((item) => (
-
-            <div className={styles.data}>
-              <img className={styles.product} src={item.img} alt="" width={250}/>
+      <div className={styles.Cate}>
+          {Datas.map((item, index) => (
+            <div key={index} className={styles.data}>
+              <img className={styles.product} src={item.img} alt={item.content} width={250}/>
               <h1>{item.title}</h1>
               <h3>{item.content}</h3>
+              <button 
+                className={styles.addBag} 
+                onClick={() => addToCart({
+                  id: `mc-${index}`,
+                  name: item.content,
+                  price: item.title,
+                  image: item.img
+                })}
+              >
+                Add to Bag
+              </button>
             </div>  
           ))}
-            </div>
+      </div>
 
     </div>
-      
-  
-    </>
   )
 }

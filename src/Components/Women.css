@@ -1,105 +1,121 @@
-*{
-    margin: 0;
+.women-page {
+    background: #000;
+    color: #fff;
+    padding-top: 100px;
+    min-height: 100vh;
 }
-.offer1{
-    margin-top:40px;
-    margin-left: 120px;
-}
-.Banner1{
-      margin-left: 120px;
-}
-.Banner1:hover{
-cursor: pointer;
-}
-.Sleepwear{
-    margin-top:30px;
-     margin-left: 120px;
 
+.Banner1, .offer1, .freedeli, .Banner2, .Banner3, .Banner4 {
+    width: 90%;
+    margin: 40px auto;
+    display: block;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease;
 }
-.Card0{
-    display:inline;
-   margin-left: 70px;
-   padding-left: 19px;
-   
-   
+
+.Banner1:hover { transform: scale(1.02); cursor: pointer; }
+
+.Sleepwear {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 4rem 5% 2rem;
+    background: linear-gradient(135deg, #fff 0%, #888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-.Card1,.Card2,.Card3,.Card4{
+
+.product-section {
+    padding: 0 5%;
+    margin-bottom: 5rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
-    max-width: 250px;
-  
-     margin-top: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.Card01{
-    display:inline;
-   
+
+.product-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: #ffd700;
 }
-.Card5,.Card6,.Card7,.Card8{
-    border-radius: 20px;
-     max-width: 250px;
-     margin-left: 40px;
-    margin-top: 30px;
-   }
-   .freedeli{
-     margin-top: 30px;
-     margin-left: 20px;
-   }
-   .Banner2,.Banner3,.Banner4{
-      margin-top: 30px;
-       margin-left: 120px;
-   }
-   .Card9,.Card10 {
-     margin-top: 30px;
-       margin-left: 10px;
-       max-width: 400px;
-   }
-   .Card21{
-     margin-top: 30px;
-       margin-left: 10px;
-       max-width: 700px;
-   }
-   .Card02{
-    display:inline;
-   
+
+.product-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
-.Card11,.Card12,.Card13,.Card14{
-    border-radius: 20px;
-     max-width: 250px;
-    margin-left: 20px;
-    margin-top: 30px;
-   }
-   .Card15{
-    margin-top: 30px;
-    margin-left: 120px;
-   }
-   .Card03{
-     display:inline;
-   }
-   .Card17,.Card18,.Card19,.Card20{
-      border-radius: 20px;
-     max-width: 250px;
-    margin-left: 16px;
-   margin-top: 30px;
-   }
-   .Card21{
-    margin-top: 40px;
-    margin-left: 120px;
-   }
-   #exploreshopwomen{
-   margin-top: 30px;
-  margin-left:40px;
-  display:inline;
-  max-width:300px;
-  height:300px;
-  padding-left:20px;
-  border-radius:40px;
-   }
-   #exploreshopwomen:hover{
-   transform: translatey(-10px);
-   
-   
+
+.product-info {
+    padding: 1.5rem;
+    text-align: center;
 }
-.twocard{
+
+.product-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.product-info p {
+    font-size: 1.4rem;
+    color: #ffd700;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.product-info button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.product-info button:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+}
+
+#exploreshopwomen {
     display: flex;
-    margin-left: 190px;
-    /* max-width: 400px; */
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 5%;
+    flex-wrap: wrap;
+}
+
+#exploreshopwomen img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+    transition: 0.4s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#exploreshopwomen img:hover {
+    transform: translateY(-15px) scale(1.05);
+    border-color: #ffd700;
+}
+
+@media (max-width: 768px) {
+    .Sleepwear { font-size: 1.8rem; }
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .product-card img { height: 250px; }
 }
