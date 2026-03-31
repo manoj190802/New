@@ -40,7 +40,7 @@ export default function Navbar() {
       </div>
 
       <div className="Nav-login-cart">
-        <button>Login</button>
+        <Link to="/login"><button>Login</button></Link>
         <img src={favicon} alt="" width={30}/>
         <Link to="/cart" className="cart-badge-container">
             <img className="carticon" src={carticon} alt="" width={40} />

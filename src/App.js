@@ -50,6 +50,7 @@ import { CartProvider } from './Components/CartContext'
 import CartPage from './Components/Cart/CartPage'
 import Checkout from './Components/Cart/Checkout'
 import Linen from './Components/Linenproduct/Linen'
+import Login from './Components/Login/Login'
 
 
 export default function App() {
@@ -69,7 +70,7 @@ export default function App() {
               <Route path='/linen' element={<Linen/>}/>
               <Route path='/cart' element={<CartPage/>}/>
               <Route path='/checkout' element={<Checkout/>}/>
-              
+              <Route path='/login' element={<Login/>}/>
            
        </Routes>
        
