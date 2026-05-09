@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import './Mens.css'
 import menoffer1 from '../Assets/menoffer1.png'
 import hero1 from '../Assets/hero1.png'
+import linen2 from '../Assets/Linenproduct/image copy.png'
 
 import img1 from '../Assets/cart1.png'
 import img2 from '../Assets/cart2.png'
@@ -79,18 +80,20 @@ export default function Mens() {
       <section className="product-section">
         <h1 className='CasualLove'>Casual Love</h1>
         <div className='product-grid'>
+          {/* The LINEN STORY Card */}
+          <div className='product-card clickable' onClick={() => navigate('/linen')}>
+             <img src={linen2} alt="Linen Story Collection" />
+             <div className="linen-story-overlay">
+               LINEN STORY
+             </div>
+          </div>
           {casualLoveItems.map((item) => (
-            <div key={item.id} className='product-card'>
+            <div key={item.id} className='product-card clickable' onClick={() => navigate('/Mencate')}>
                <img src={item.img} alt={item.name} />
                <div className="product-info">
                  <h3>{item.name}</h3>
                  <p>{item.price}</p>
-                 <button onClick={() => addToCart({
-                   id: item.id,
-                   name: item.name,
-                   price: item.price,
-                   image: item.img
-                 })}>Add to Bag</button>
+                 <button onClick={(e) => { e.stopPropagation(); addToCart(item); }}>Add to Cart</button>
                </div>
             </div>
           ))}
@@ -109,17 +112,12 @@ export default function Mens() {
         <h1 className='CasualLove'>Style Spotlight</h1>
         <div className='product-grid'>
           {styleSpotlightItems.map((item) => (
-             <div key={item.id} className='product-card'>
+             <div key={item.id} className='product-card clickable' onClick={() => navigate('/Mencate')}>
                 <img src={item.img} alt={item.name} />
                 <div className="product-info">
-                  <h3>{item.name}</h3>
-                  <p>{item.price}</p>
-                  <button onClick={() => addToCart({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    image: item.img
-                  })}>Add to Bag</button>
+                 <h3>{item.name}</h3>
+                 <p>{item.price}</p>
+                 <button onClick={(e) => { e.stopPropagation(); addToCart(item); }}>Add to Cart</button>
                 </div>
              </div>
           ))}
@@ -133,17 +131,12 @@ export default function Mens() {
         <h1 className='CasualLove'>Bottoms Up: Style Edition</h1>
         <div className='product-grid'>
           {bottomsUpItems.map((item) => (
-             <div key={item.id} className='product-card'>
+             <div key={item.id} className='product-card clickable' onClick={() => navigate('/Mencate')}>
                 <img src={item.img} alt={item.name} />
                 <div className="product-info">
-                  <h3>{item.name}</h3>
-                  <p>{item.price}</p>
-                  <button onClick={() => addToCart({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    image: item.img
-                  })}>Add to Bag</button>
+                 <h3>{item.name}</h3>
+                 <p>{item.price}</p>
+                 <button onClick={(e) => { e.stopPropagation(); addToCart(item); }}>Add to Cart</button>
                 </div>
              </div>
           ))}
@@ -160,4 +153,4 @@ export default function Mens() {
       </div>
     </div>
   );
-}
+}

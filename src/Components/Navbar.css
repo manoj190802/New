@@ -1,94 +1,159 @@
-*{
-  font-family: monospace;
-   margin:0;
-}
-.navbar{
+.navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  transition: transform 0.3s ease;
-  background: white;
+  transition: transform var(--transition-normal), background var(--transition-normal);
   z-index: 1000;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.navbar.hide{
+.navbar.hide {
   transform: translateY(-100%);
 }
 
-.navbar.show{
+.navbar.show {
   transform: translateY(0);
 }
 
-.Nav-logo{
-  justify-content: center;
+.Nav-logo {
+  display: flex;
+  align-items: center;
 }
-.logoimg{
-  width: 200px;
-  height: 100px;
+
+.Nav-logo img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  /* Removed white invert filter to keep logo original (black) */
+  filter: brightness(0); /* Forces logo to black */
+  transition: opacity var(--transition-fast);
 }
-.Nav-menu{
+
+.Nav-logo img:hover {
+  opacity: 0.8;
+}
+
+.Nav-menu {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 70px;
-  font-size: 20px;
- 
-}
-.Nav-menu a{
-text-decoration: none;
-color: black;
-}
-.Nav-menu :hover{
-  padding-bottom: 20px;
-  color: orange;
-  transition: 0.2s;
-}
-.Nav-login-cart{
-  align-items: center;
-  display: flex;
-  gap: 50px;
-}
-.Nav-login-cart button{
-  width: 157px;
-  height: 58px;
-  border: 1px solid rgb(0, 0, 0);
-  background-color: white;
-  font-size: large;
-  border-radius: 50px;
-  cursor: pointer;
-}
-.Nav-login-cart button:hover{
- border: 1px solid orange;
-}
-.carticon:hover{
-cursor: pointer;
-  transform: translateX(70px);
-  transition: 2s;
-  
+  gap: 3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
 }
 
-/* Re-adding the minimal badge style so the cart count still shows */
+.Nav-menu a {
+  text-decoration: none;
+  color: var(--text-primary);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.Nav-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff9900; /* Orange accent */
+  transition: width var(--transition-normal);
+}
+
+.Nav-menu a:hover {
+  color: #ff9900;
+}
+
+.Nav-menu a:hover::after {
+  width: 100%;
+}
+
+.Nav-login-cart {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+
+.Nav-login-cart button {
+  padding: 0.6rem 1.8rem;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.Nav-login-cart button:hover {
+  background-color: #ff9900;
+  color: #000;
+  border-color: #ff9900;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.carticon {
+  /* Using a filter to turn a black/white icon into orange */
+  filter: invert(50%) sepia(90%) saturate(1500%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  transition: transform var(--transition-normal);
+}
+
 .cart-badge-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.cart-badge-container:hover {
+  transform: scale(1.1);
 }
 
 .cart-badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background: orange;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background: #ff9900;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-primary);
+}
+
+@media (max-width: 768px) {
+  .Nav-menu {
+    display: none; /* Hide on mobile for now, ideally an off-canvas menu */
+  }
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+  .Nav-logo img {
+    width: 140px;
+  }
+  .Nav-login-cart {
+    gap: 1rem;
+  }
+  .Nav-login-cart button {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+  }
 }

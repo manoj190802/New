@@ -8,14 +8,17 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [wishlistItems, setWishlistItems] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const [notificationProduct, setNotificationProduct] = useState(null);
   const [fadeNotification, setFadeNotification] = useState(false);
   const fadeTimeoutRef = useRef(null);
   const hideTimeoutRef = useRef(null);
 
-  // Load cart from localStorage on mount
+  // Load cart and wishlist from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
+    const savedWishlist = localStorage.getItem('wishlist');
     if (savedCart) {
       try {
         setCartItems(JSON.parse(savedCart));
@@ -23,12 +26,23 @@ export const CartProvider = ({ children }) => {
         console.error("Failed to parse cart from local storage", e);
       }
     }
+    if (savedWishlist) {
+      try {
+        setWishlistItems(JSON.parse(savedWishlist));
+      } catch (e) {
+        console.error("Failed to parse wishlist from local storage", e);
+      }
+    }
   }, []);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart and wishlist to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+  }, [wishlistItems]);
 
   const addToCart = (product) => {
     setCartItems(prevItems => {
@@ -46,6 +60,7 @@ export const CartProvider = ({ children }) => {
     if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
 
     // Trigger notification
+    setNotificationProduct(product);
     setShowNotification(true);
     setFadeNotification(false);
 
@@ -62,6 +77,16 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (id) => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+  };
+
+  const toggleWishlist = (product) => {
+    setWishlistItems(prevItems => {
+      const exists = prevItems.find(item => item.id === product.id);
+      if (exists) {
+        return prevItems.filter(item => item.id !== product.id);
+      }
+      return [...prevItems, product];
+    });
   };
 
   const updateQuantity = (id, quantity) => {
@@ -88,14 +113,24 @@ export const CartProvider = ({ children }) => {
       updateQuantity, 
       clearCart,
       cartTotal,
-      cartCount
+      cartCount,
+      wishlistItems,
+      toggleWishlist
     }}>
       {children}
-      {showNotification && (
+      {showNotification && notificationProduct && (
         <div className="notification-container">
           <div className={`notification ${fadeNotification ? 'fade-out' : ''}`}>
-            <span className="notification-icon">✓</span>
-            Successfully added to bag
+            {notificationProduct.image && (
+              <img src={notificationProduct.image} alt={notificationProduct.name} style={{width: '40px', height: '40px', borderRadius: '6px', objectFit: 'cover'}} />
+            )}
+            <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                <span className="notification-icon">✓</span>
+                <span style={{fontWeight: '600'}}>Added to bag</span>
+              </div>
+              <span style={{fontSize: '0.85rem', color: '#aaa', fontWeight: '400'}}>{notificationProduct.name}</span>
+            </div>
           </div>
         </div>
       )}

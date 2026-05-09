@@ -79,14 +79,7 @@ export default function Women() {
               <div key={item.id} className='product-card'>
                 <img src={item.img} alt={item.name} />
                 <div className="product-info">
-                  <h3>{item.name}</h3>
-                  <p>{item.price}</p>
-                  <button onClick={() => addToCart({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    image: item.img
-                  })}>Add to Bag</button>
+                  
                 </div>
               </div>
             ))}
@@ -102,14 +95,7 @@ export default function Women() {
               <div key={item.id} className='product-card'>
                 <img src={item.img} alt={item.name} />
                 <div className="product-info">
-                  <h3>{item.name}</h3>
-                  <p>{item.price}</p>
-                  <button onClick={() => addToCart({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    image: item.img
-                  })}>Add to Bag</button>
+                 
                 </div>
               </div>
             ))}
